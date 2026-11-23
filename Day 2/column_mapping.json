@@ -1,9 +1,6 @@
 {
   "order_id": "order_id",
-  "order_item_id": "order_item_id",
-  "product_id": "product_id",
-  "seller_id": "seller_id",
-  "shipping_limit_date": "shipping_limit_date",
+  "freight_value": "freight",
   "price": "price",
-  "freight_value": "freight"
+  "shipping_limit_date": "shipping_limit_date"
 }

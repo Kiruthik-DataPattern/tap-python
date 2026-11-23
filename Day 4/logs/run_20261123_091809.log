@@ -1,0 +1,4 @@
+2026-11-23 09:18:09,729 INFO Starting run 20261123_091809
+2026-11-23 09:18:10,163 INFO Read 112650 rows from ../archive/olist_order_items_dataset.csv
+2026-11-23 09:18:11,639 INFO Wrote 112650 clean rows
+2026-11-23 09:18:11,639 INFO Finished run 20261123_091809

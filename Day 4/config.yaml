@@ -1,0 +1,12 @@
+paths:
+  input_files:
+    - ../archive/olist_order_items_dataset.csv
+  log_dir: logs
+  clean_csv: outputs/clean.csv
+  clean_json: outputs/clean.json
+  summary_json: outputs/run_summary.json
+  manifest: manifest.json
+thresholds:
+  max_rejected_ratio: 0.20
+mapping:
+  freight_value: freight
