@@ -1,0 +1,26 @@
+mapping:
+  olist_order_items_dataset.csv:
+    freight_value: freight
+  olist_orders_semicolon.csv:
+    order_status: status
+paths:
+  bad_csv: outputs/bad_records.csv
+  clean_csv: outputs/clean.csv
+  clean_json: outputs/clean.json
+  data_dirs:
+  - ../archive
+  log_dir: logs
+  manifest: manifest.json
+  summary_json: outputs/run_summary.json
+required:
+  olist_customers_dataset.csv:
+  - customer_id
+  - customer_zip_code_prefix
+  olist_order_items_dataset.csv:
+  - order_id
+  - price
+  - freight_value
+  olist_orders_dataset.csv:
+  - order_id
+  - customer_id
+  - order_status
