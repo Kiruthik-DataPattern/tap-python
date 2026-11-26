@@ -1,0 +1,7 @@
+6. SURROGATE VS NATURAL KEYS
+
+Olist gives natural keys like order_id and product_id. They are 32-character hex strings, and I keep them in the dimensions so I can trace a row back to the CSV.
+
+In fact_sales I use small integer surrogate keys. Storing a 32-character string millions of times is wasteful, and if Olist changes its ID format the surrogate key stays the same.
+
+For dim_date I use YYYYMMDD as the key. It is short, sortable and easy to read. dim_payment_type gets a tiny integer key because the natural value is a long word like credit_card.

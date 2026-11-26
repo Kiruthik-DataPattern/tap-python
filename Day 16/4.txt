@@ -1,0 +1,9 @@
+4. DIMENSIONS
+
+customer      who bought: customer id, unique id, zip prefix, city, state
+product       what was bought: product id, category, size and weight
+seller        who sold it: seller id, zip prefix, city, state
+date          when it happened: purchase date, month, quarter, year, weekday
+payment type  how they paid: credit card, boleto, voucher or debit card
+
+Each dimension has one row per thing. fact_sales keeps only a small key that points back to it.
