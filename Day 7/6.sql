@@ -111,3 +111,19 @@ WHERE process_name = 'sales_load';
 SELECT process_name, last_purchase_ts FROM etl_watermark;
 SELECT YEAR(STR_TO_DATE(date_key, '%Y%m%d')) AS sales_year, COUNT(*) AS items
 FROM fact_sales GROUP BY YEAR(STR_TO_DATE(date_key, '%Y%m%d'));
+
+-- Verification queries for the incremental load.
+SELECT YEAR(o.order_purchase_timestamp) AS source_year, COUNT(*) AS source_orders
+FROM stg_orders_inc o
+GROUP BY YEAR(o.order_purchase_timestamp)
+ORDER BY source_year;
+
+SELECT COUNT(*) AS fact_rows,
+       COUNT(DISTINCT order_id, order_item_id) AS distinct_order_items
+FROM fact_sales;
+
+SELECT order_id, order_item_id, COUNT(*) AS copies
+FROM fact_sales
+GROUP BY order_id, order_item_id
+HAVING COUNT(*) > 1
+LIMIT 10;
