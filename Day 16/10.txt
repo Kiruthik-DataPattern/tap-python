@@ -1,0 +1,7 @@
+10. WHY FACT_REVIEWS IS A SEPARATE FACT
+
+fact_sales has one row per order item. A review is written once for the order, usually after delivery.
+
+If I pasted the review score onto every item row, an order with four items would count that one review four times. The average score would be wrong.
+
+A separate fact_reviews table keeps one row per review, with its own measures: score, whether a comment was written, and the created and answered dates. It still joins to the date and product dimensions, so we can ask which category gets the worst scores without distorting sales totals.

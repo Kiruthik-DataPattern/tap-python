@@ -1,0 +1,5 @@
+2. GRAIN OF FACT_SALES
+
+One row = one item on one order. If a customer buys three items, fact_sales gets three rows.
+
+It is not one row per order. Price, freight and seller are different for every item, so rolling up to the order would hide which product sold, which seller shipped it and how much freight it cost.

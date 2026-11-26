@@ -1,6 +1,5 @@
-STAR SCHEMA
+5. STAR SCHEMA
 
-draw.io is a desktop app, so here is the same idea drawn with text characters.
 fact_sales is in the middle. The five dimensions sit around it.
 
                       dim_customer
@@ -13,5 +12,4 @@ dim_product ---- fact_sales ---- dim_seller
 
 fact_reviews sits next to the star. It joins to dim_date and dim_product.
 
-One dimension row connects to many fact rows. For example, one customer can
-have many sales rows.
+One dimension row connects to many fact rows. For example, one customer can have many sales rows.

@@ -1,0 +1,8 @@
+3. MEASURES
+
+price          what the item sold for
+freight_value  shipping cost for that item
+item_value     price + freight, handy for quick reports
+item_count     always 1 per row, so we can add items with SUM
+
+payment_value is not here. Payments are per order, not per item, so putting it on each item row would double count it. It belongs in its own payment fact if we need it later.
