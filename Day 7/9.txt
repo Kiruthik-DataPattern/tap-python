@@ -1,0 +1,9 @@
+9. ETL VS ELT DECISION NOTE
+
+I choose ELT for this project.
+
+We load the raw Olist CSVs into MySQL staging tables first, then do the joins, lookups and sums with SQL. The data is small enough, the transformations are simple joins, and SQL keeps everything in one place where we can rerun a step and inspect it.
+
+ETL would mean transforming in Python before loading. That would help if the transformations were heavy, if we had to call APIs, or if MySQL was too slow. None of that is true here.
+
+The trade-off is that staging tables hold raw data, so they need cleanup and access control. That is acceptable for a learning project and easy to explain to a reviewer.

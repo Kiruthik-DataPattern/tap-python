@@ -1,0 +1,11 @@
+8. HANDLING LATE-ARRIVING DIMENSION ROWS
+
+A sale can arrive before its customer or product row has reached the warehouse.
+
+Put an "unknown" row in every dimension with key -1. If a lookup fails, point the fact row at -1 instead of dropping the sale.
+
+When the real dimension row finally arrives, insert it with its new surrogate key. New facts use the new key. Old facts stay on -1 unless we decide to reprocess them.
+
+With SCD type 2, a late change to an existing customer closes the old version (sets effective_to) and opens a new version. Existing facts keep the old customer_key because that was the correct location at order time. New facts get the new key.
+
+Keep a small table of facts that used -1. After the dimension arrives, reprocess only those facts if leadership wants the current dimension view. Log anything still unresolved as a data quality error.
