@@ -1,6 +1,4 @@
-# What Olist leadership would probably ask
-
-These are written the way a busy manager would actually ask them, not like exam questions.
+BUSINESS QUESTIONS OLIST LEADERSHIP WOULD ASK
 
 1. How much money did we really make each month, and are we growing?
 2. Which product categories sell best, and which ones just sit there?
@@ -11,4 +9,4 @@ These are written the way a busy manager would actually ask them, not like exam 
 7. How happy are customers, and what do they complain about most often?
 8. How do people pay, and do installments lead to bigger orders?
 
-Every question above can be answered from the star schema below.
+Every question above can be answered from the star schema in star_schema.txt.
