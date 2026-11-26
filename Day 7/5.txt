@@ -1,0 +1,17 @@
+5. WATERMARK USING ORDER_PURCHASE_TIMESTAMP
+
+Watermark table:
+etl_watermark(process_name VARCHAR(50), last_purchase_ts DATETIME)
+
+Rule:
+1. Read last_purchase_ts for process 'sales_load'.
+2. Select source rows with order_purchase_timestamp > last_purchase_ts - 1 day.
+   The one-day overlap catches rows that arrived late.
+3. Load those rows into staging, then into the tables.
+4. Use the natural key (order_id, order_item_id) to ignore rows already loaded.
+5. After a successful load, set last_purchase_ts = MAX(order_purchase_timestamp)
+   from the rows just loaded.
+
+Store the watermark only after the load succeeds. If the load fails, the watermark
+stays where it was and the next run picks the same slice again. That is safe because
+of the unique key on the fact table.

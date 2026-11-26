@@ -1,0 +1,17 @@
+1. SOURCE INVENTORY
+
+The archive folder is not in this workspace anymore, so the row counts below are the ones we measured earlier. Files I never counted are marked "not counted here" instead of guessing.
+
+FILE                                      ROWS        KEY                      UPDATE FREQUENCY
+olist_orders_dataset.csv                  99,441      order_id                 daily append
+olist_customers_dataset.csv                99,441      customer_id              daily append
+olist_order_items_dataset.csv             112,650     order_id+order_item_id   daily append
+olist_orders_semicolon.csv                 99,441      order_id                 daily append (same source, different delimiter)
+olist_order_payments_dataset.csv           not counted here   order_id+payment_sequential   daily append
+olist_order_reviews_dataset.csv            not counted here   review_id                daily append
+olist_products_dataset.csv                 not counted here   product_id               weekly / catalog refresh
+olist_sellers_dataset.csv                  not counted here   seller_id                weekly / catalog refresh
+olist_geolocation_dataset.csv              not counted here   zip prefix + lat/lng     monthly refresh
+product_category_name_translation.csv      not counted here   product_category_name    rare, manual edit
+
+Assume the Olist files arrive as full daily snapshots. We only load the new slice using the watermark in 5.txt.

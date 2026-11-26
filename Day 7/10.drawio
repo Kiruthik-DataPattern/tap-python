@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net" version="24.7.17">
+  <diagram id="day7-load-order" name="Load Order and Dependencies">
+    <mxGraphModel dx="1100" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="raw" value="1. LOAD RAW CSVs&lt;br&gt;stg_orders, stg_order_items,&lt;br&gt;stg_customers, stg_products,&lt;br&gt;stg_sellers, stg_order_payments" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="40" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="dims" value="2. BUILD DIMENSIONS&lt;br&gt;dim_customer, dim_product,&lt;br&gt;dim_seller, dim_payment_type, dim_date" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="200" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="fact" value="3. BUILD FACT_SALES&lt;br&gt;2017 load, then 2018 incremental load&lt;br&gt;using watermark" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="360" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="water" value="4. UPDATE WATERMARK&lt;br&gt;etl_watermark.last_purchase_ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="370" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="rev" value="5. BUILD FACT_REVIEWS&lt;br&gt;separate grain: one row per review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="650" y="370" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="dq" value="6. CHECKS&lt;br&gt;DQ rules, bad records,&lt;br&gt;fact totals vs source totals" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="530" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="done" value="7. READY FOR REPORTS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="300" y="690" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="raw" target="dims">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="dims" target="fact">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;dashed=1;" edge="1" parent="1" source="raw" target="fact">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="fact" target="water">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;dashed=1;" edge="1" parent="1" source="dims" target="rev">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="fact" target="dq">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="dq" target="done">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

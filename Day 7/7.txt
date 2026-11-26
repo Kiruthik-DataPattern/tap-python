@@ -1,0 +1,14 @@
+7. TEN DATA QUALITY RULES
+
+1. order_id must be 32 hex characters.
+2. order_item_id must be a positive whole number.
+3. price must be greater than 0.
+4. freight_value must be 0 or more.
+5. order_purchase_timestamp must parse as a date.
+6. order_status must be in the allowed list (delivered, shipped, canceled, unavailable, invoiced, processing, created, approved).
+7. customer_id, product_id and seller_id must be 32 hex characters.
+8. (order_id, order_item_id) must be unique in fact_sales.
+9. SUM(price) and SUM(freight_value) in fact_sales must match the source staging table.
+10. date_key must exist in dim_date, and every fact row must have a non-null customer, product, seller and date key.
+
+Rows that fail 1-7 go to bad_records.csv with a reason. Rule 8 blocks the INSERT through the unique key. Rules 9-10 are checked after the load.

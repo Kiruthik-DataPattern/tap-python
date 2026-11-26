@@ -1,0 +1,13 @@
+4. SCD TYPE FOR EACH DIM_CUSTOMER ATTRIBUTE
+
+customer_id         Type 0. It is the natural key and never changes.
+customer_unique_id  Type 0. It identifies the person across orders and never changes.
+zip_prefix          Type 2. If a customer moves, we keep the old row for old orders.
+city                Type 2. Same reason: location analysis by order date must stay correct.
+state               Type 2. Same reason as city.
+
+Why not Type 1 everywhere? Overwriting the location would silently rewrite old sales
+reports. Type 2 costs more rows but keeps history honest.
+
+If leadership only ever wants the current location, Type 1 would be simpler. I chose
+Type 2 because the questions in Day 16 ask about states and cities over time.
