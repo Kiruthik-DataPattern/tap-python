@@ -1,0 +1,14 @@
+# What Olist leadership would probably ask
+
+These are written the way a busy manager would actually ask them, not like exam questions.
+
+1. How much money did we really make each month, and are we growing?
+2. Which product categories sell best, and which ones just sit there?
+3. Which states and customers bring in the most money, so where should we spend marketing budget?
+4. How long does an order take from purchase to delivery, and where does it get stuck?
+5. Which sellers are quick and reliable, and which ones need a conversation?
+6. How much of our revenue disappears into freight, and is it hurting our margin?
+7. How happy are customers, and what do they complain about most often?
+8. How do people pay, and do installments lead to bigger orders?
+
+Every question above can be answered from the star schema below.
